@@ -1,0 +1,723 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300&display=swap');
+
+body {
+  margin: 0px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 30px;
+  min-width: 300px;
+}
+
+/* Body Header */
+
+#body-header {
+  height: 60vh;
+  min-width: 300px;
+  min-height: 300px;
+  opacity: 0.8;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROdNIejFmjeKC5u6Xq2yqOCa5y-uJseTCTfA&usqp=CAU);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 1.2rem 0px;    
+}
+
+#bar{
+  display: none;
+}
+
+
+
+/* Horizontal Lists */
+
+.horizontal-list {
+  list-style: none;
+  padding-left: 0px;
+  margin: 0px;
+}
+
+.horizontal-list li {
+  display: inline-block;
+  margin: 0px 8px 8px 0px;
+  font-weight: 100;
+  font-size: 0.9rem;
+}
+
+
+.horizontal-list li a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-menu li a {
+  transition: color 0.5s, border-bottom 4s;
+}
+
+.nav-menu li a:hover {
+  color: lightgrey;
+  border-bottom: 1px solid black;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Name and Social Icons*/
+
+#name-social-container {
+  margin-top: 20vh;
+}
+
+#my-name {
+  font-size: 3rem;
+  letter-spacing: 0.1rem;
+  color: white;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.social-icons{
+  margin: 10px 0px;
+}
+
+.social-icons li a i {
+  /*color: red;*/
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 50%;
+}
+
+
+.social-icons li a i:hover {
+  box-shadow: 0px 0px 6px 4px rgba(230, 196, 196, 0.3);
+}
+
+@media screen and (max-width: 572px){
+  
+#name-social-container {
+      margin-top: 10vh;
+  }
+  
+  nav #bar{
+      display: flex;
+      justify-content: flex-end;
+  }
+  
+  nav #bar div:first-child{
+      margin-right: 5%;
+      margin-bottom: 5%;
+      color: white;
+  }
+  nav .horizontal-list{
+      display: none;
+  }
+  
+
+  nav #bar #menu {
+      display: none;
+      top: 7%;
+      left: 70%;
+      width: 7rem;
+      background-color: rgba(205, 199, 172, 1);
+      box-shadow: 0px 0px 1rem black;
+      position: absolute;
+      margin: 1rem;
+  }
+  
+  nav #bar:hover #menu{
+    display: block;    
+  }
+  
+  #droplist{
+     list-style: none;
+      padding: 10px;
+    margin: 0px;        
+  }
+  
+  #droplist li a{
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      margin: 0px;
+      font-weight: bold;
+  }
+
+   #droplist li a:hover{
+      color: gray;
+   }
+}
+
+/*About Section*/
+
+#about {
+  height: auto;
+  position: relative;
+}
+
+#my-image {
+  height: 12rem;
+  width: 12rem;
+  margin: auto;
+  margin-top: -130px;
+}
+
+#my-image img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 1px 1px 10px 2px lightgrey;
+}
+
+
+#about-para {
+  padding: 10px;
+  width: 70%;
+  text-align: justify;
+  color: grey;
+  line-height: 28px;
+  font-size: 1.1rem;
+  margin: auto;
+}
+
+.text-highlight {
+  color: #2857a4;
+  font-weight: 600;
+}
+
+/*common sections and classes*/
+section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0px;
+  min-width: 300px;
+}
+
+section:nth-of-type(odd){
+  background-color: white;
+}
+
+section:nth-of-type(even){
+  background-color: lightgrey;
+}
+
+.section-heading{
+  color: black;
+  text-transform: sentence-case;
+  margin: 2rem;
+}
+
+/*skill section*/
+
+#skills #skill-set{
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2px;
+  justify-content: space-around; 
+
+}
+
+
+
+#skill-set .skill-percent{
+  height: 2.5rem;
+  width: 10rem;
+  margin: 1rem;
+  background-color: black;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px;
+}
+
+.percent60{
+  height: inherit;
+  width: 60%;
+  background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+  border-radius : 20px 0px 0px 20px;
+  box-shadow: 0px 0px 5px;
+}
+
+.percent70{
+  height: inherit;
+  width: 70%;
+  background-image: linear-gradient( 109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% );
+  border-radius : 20px 0px 0px 20px;
+  box-shadow: 0px 0px 5px;
+}
+
+.percent80{
+  height: inherit;
+  width: 70%;
+  background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% );
+  border-radius : 20px 0px 0px 20px;
+  box-shadow: 0px 0px 5px;
+}
+
+.percent75{
+  height: inherit;
+  width: 75%;
+  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+  border-radius : 20px 0px 0px 20px;
+  box-shadow: 0px 0px 5px;
+}
+
+
+.skill-percent span{
+  color: rgb(0, 0, 0);
+  font-size: 1.2rem;
+  padding: 10px;
+}
+
+/*tech section*/
+
+#tech #work{
+  width: 80%;
+  height: inherit;
+  position: relative;
+}
+
+#tech #work #work-div{
+  width: 40%;
+  margin: 2%;
+  position: relative;
+  text-align: right;
+}
+
+#tech #work #work-div:nth-child(odd)::after{
+  content: " ";
+  position: absolute;
+  top: 20%;
+  right: -22%;
+  height: 0.7rem;
+  width: 0.7rem;
+  border-radius: 50%;
+   background-color: skyblue;
+  z-index: 1;
+}
+
+#tech #work #work-div:nth-child(even){
+  width: 40%;
+  margin: 2%;
+  margin-left: 58.4%;
+} 
+
+#tech #work #work-div:nth-child(even)::after{
+  content: " ";
+  position: absolute;
+  top: 20%;
+  left: -22%;
+  height: 0.7rem;
+  width: 0.7rem;
+  border-radius: 50%;
+   background-color: skyblue;
+  z-index: 1;
+}
+
+#tech #work #divider{
+  height: 90%;
+  width: 0%;
+  border: 1px dashed black;
+  position: absolute;
+  top: 4%;
+  left: 50%;
+}
+
+#tech #work #divider #plane{
+  position: sticky;
+  transform: rotate(90deg);
+  top: 50%;
+  color: black;
+  z-index: 2;
+}
+
+@media screen and (max-width: 572px)
+{
+  #tech #work #work-div:nth-child(n){
+      width: 80%;
+      margin: 1rem;
+      margin-left: 10%;
+  } 
+  
+  #tech #work #divider{
+      height: 74%;
+      width: 0%;
+      border: 1px deashed black;
+      position: absolute;
+      top: 6%;
+      left: 1%;
+  }
+
+#tech #work #work-div:nth-child(n)::after{
+      content: " ";
+      position: absolute;
+      top: 20%;
+      left: -13%;
+      height: 0.7rem;
+      width: 0.7rem;
+      border-radius: 50%;
+      background-color: skyblue;
+      z-index: 1;
+  }
+
+}
+
+/*education section*/
+
+#education #edu-box{
+  width: 80%;
+  height: inherit;
+  position: relative;
+}
+
+#education #edu-box #education-div{
+  width: 40%;
+  margin: 2%;
+  position: relative;
+  text-align: left;
+}
+
+/*common styling for content*/
+
+.content{
+  font-size: 1rem;
+  text-align: justify;
+  background-image: url(https://jashanpreet1234.github.io/quoteGenerator.github.io/);
+  color: #500c0c;
+  word-spacing: 5px;
+  line-height: 20px;
+} 
+.socials{
+  height: 50px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 0 0 20px;
+}
+
+.socials i{
+  font-size: 1.4em;
+  color: white;
+  margin: 0 10px 0 0;
+}
+
+.socials i:hover{
+  color: rgba(220, 220, 220, 0.829);
+  cursor: pointer;
+}
+
+.line-height{
+  line-height: 1.5 !important;
+}
+
+
+
+
+.orange-heading{
+  color:darkorange;
+  font-weight: 500;
+  font-size: 1.7rem;
+}
+
+.orange-heading{
+  color: darkorange;
+  font-weight: 500;
+  font-size: 1.7rem;
+}
+
+
+#education #edu-box #education-div:nth-child(odd)::after{
+  content: " ";
+  position: absolute;
+  top: 17%;
+  right: -22%;
+  height: 0.7rem;
+  width: 0.7rem;
+  border-radius: 50%;
+   background-color: darkgray;
+  z-index: 1;
+}
+
+#education #edu-box #education-div:nth-child(even){
+  width: 40%;
+  margin: 2%;
+  margin-left: 58.4%;
+}
+
+#education #edu-box #education-div:nth-child(even)::after{
+  content: " ";
+  position: absolute;
+  top: 20%;
+  left: -22%;
+  height: 0.7rem;
+  width: 0.7rem;
+  border-radius: 50%;
+   background-color: darkgray;
+  z-index: 1;
+}
+
+#education #edu-box #divider{
+  height: 80%;
+  width: 0%;
+  border: 1px dashed black;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+}
+
+#education #edu-box #education-div .content{
+  text-align: left;
+}
+
+#education #edu-box #divider #car{
+  position: sticky;
+  top: 30%;
+  transform: rotate(90deg);
+  color: black;
+  left: -30%;
+  z-index: 2;
+}
+
+@media screen and (max-width: 572px){
+  
+  #education #edu-box #education-div:nth-child(n){
+      width: 80%;
+      margin: 1rem;
+      margin-left: 10%;
+  }
+
+  #education #edu-box #education-div:nth-child(n)::after{
+      content: " ";
+      position: absolute;
+      top: 17%;
+      left: -13%;
+      height: 0.7rem;
+      width: 0.7rem;
+      border-radius: 50%;
+      background-color: darkgray;
+      z-index: 1;
+  }
+
+  #education #edu-box #divider{
+      height: 65%;
+      width: 0%;
+      border: 1px dashed black;
+      position: absolute;
+      top: 9%;
+      left: 1%;
+  }
+
+}
+
+/*portfolio section*/
+
+
+.animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 20% auto;
+  color: #fff;
+  background-clip: text;
+  text-shadow: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 30px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+
+
+.button{
+  text-align: center;
+  height: auto;
+
+}
+
+.glow-on-hover {
+  width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+ 
+}
+
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+  
+
+}
+
+.glow-on-hover:active {
+  color: #000
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background:white;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+
+ 
+  
+}
+
+.text-1{
+  text-align: center;
+  padding-top:4%;  
+
+
+
+ 
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+#portfolio{
+   background-image: url(https://miro.medium.com/max/1400/1*vel6K7Qm9iX8mBCrZit0sw.gif);
+   width: 100%;
+   height:20%;
+}
+
+#portfolio-set #portfolio-items:nth-child(n){
+ 
+  width: 40rem;
+  height: 15rem;
+  margin: 1rem 1.5rem;
+  background-size: cover;
+  background-position: center;
+  
+}
+
+
+
+
+/*contact section*/
+#contact {
+  display: flex;
+  color: white;
+  background: radial-gradient(circle at -8.9% 51.2%, rgb(255, 124, 0) 0%, rgb(255, 124, 0) 15.9%, rgb(255, 163, 77) 15.9%, rgb(255, 163, 77) 24.4%, rgb(19, 30, 37) 24.5%, rgb(19, 30, 37) 66%);
+}
+
+#contact #feedback{
+  display: flex;
+  margin: auto;
+}
+
+#contact #feedback form{
+  width: 50%;
+  padding: 1rem;
+}
+
+#contact #feedback form .fields{
+  width: 80%;
+  margin: 0.4rem;
+  border-width: 0px;
+  border-bottom: 2px solid white;
+  background-color: transparent;
+  padding: 10px;
+  color: white;
+}
+
+#contact #feedback form #btn{
+  display: flex;
+  justify-content: center;
+  margin-left: -10%;
+}
+
+#contact #feedback form button{
+  width: 8.2rem;
+  height: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: white;
+  /*align-self: center;*/
+}
+
+#contact #feedback form button:hover{
+  background-color: black;
+}
+
+#contact #feedback #contact-details{
+  width: 50%;
+  margin-top: 2rem;
+}
+
+#contact #feedback #contact-details h6{
+  margin: 0px;
+}
+
+#contact #feedback #contact-details p{
+   font-size: 1rem;
+}
+
+
+@media screen and (max-width: 572px){
+  
+  #contact #feedback{
+      display: block;
+  }
+
+
+  #contact #feedback form{
+      width: 80%;
+      padding: 2rem;
+  }
+
+  #contact #feedback #contact-details{
+      width: 80%;
+      margin-left: 2rem;
+  }
+
+}
