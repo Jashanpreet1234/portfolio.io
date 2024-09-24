@@ -1047,3 +1047,374 @@ section#education{
     box-shadow: 0 0 20px #ff7300, 0 0 30px #ff7300;
   }
 }
+
+
+
+/* Navbar Styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  z-index: 9999;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: background-color 0.5s ease-in-out;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  margin: 0 10px; /* Spacing reduced for mobile */
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-size: 14px; /* Reduced text size for mobile */
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 5px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #eb1919;
+}
+
+.nav-links li a::before {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #eb1919;
+  transition: 0.4s ease-in-out;
+}
+
+.nav-links li a:hover::before {
+  width: 100%;
+}
+
+/* Hamburger menu for small screens */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  width: 25px;
+  height: 20px;
+}
+
+.menu-icon .bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  margin: 3px 0;
+}
+
+/* Responsive Navbar */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    height: 100vh;
+    background-color: #333;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .nav-links.active {
+    transform: translateX(0%);
+  }
+
+  .nav-links li {
+    margin: 20px 0;
+  }
+
+  .menu-icon {
+    display: flex;
+  }
+}
+
+/* Remove "Web Developer" and "Jashan" Pop-up on Mobile */
+@media screen and (max-width: 768px) {
+  #web-developer, #my-name {
+    display: none; /* Removed on mobile */
+  }
+}
+
+/* Skill bars */
+#skills #skill-set {
+  width: 70%; /* Adjusted width for larger screens */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 2px;
+}
+
+/* Skill bar appearance */
+#skill-set .skill-percent {
+  height: 2.5rem; /* Keeps height consistent */
+  width: 10rem;   /* Shortened width */
+  margin: 1rem;
+  background-color: black;
+  border-radius: 20px;
+  box-shadow: 3px 2px 10px;
+  color: #00ced1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+#skill-set .skill-percent:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Specific skill bar percentages */
+.percent55 {
+  width: 55%; /* Adjust width to reflect percentage */
+  background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 20px 0px 0px 20px;
+}
+
+.percent60 {
+  width: 60%;
+  background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+  border-radius: 20px 0px 0px 20px;
+}
+
+.percent65 {
+  width: 65%;
+  background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+  border-radius: 20px 0px 0px 20px;
+}
+
+.percent70 {
+  width: 70%;
+  background-image: linear-gradient(109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1%);
+  border-radius: 20px 0px 0px 20px;
+}
+
+/* Media Queries for Small Screens */
+@media screen and (max-width: 768px) {
+  #skills #skill-set {
+    width: 90%; /* Full width on smaller screens */
+    justify-content: space-around;
+  }
+
+  #skill-set .skill-percent {
+    width: 8rem; /* Shortened width for mobile */
+    height: 2rem; /* Smaller height for mobile */
+    margin: 0.5rem;
+  }
+}
+
+/* Further scaling down for very small screens */
+@media screen and (max-width: 572px) {
+  #skills #skill-set {
+    width: 100%; /* Maximum width for very small screens */
+  }
+
+  #skill-set .skill-percent {
+    width: 7rem; /* Even shorter skill bars */
+    height: 1.8rem; /* Reduced height */
+    margin: 0.5rem;
+  }
+}
+
+
+
+
+/* Contact Section */
+#contact {
+  padding: 15px; /* Reduced padding */
+  background: radial-gradient(circle at center, rgb(255, 124, 0) 0%, rgb(255, 163, 77) 20%, rgb(19, 30, 37) 100%);
+  border-radius: 10px; /* Added border-radius for better look */
+}
+
+/* Feedback Form Container */
+#contact #feedback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px; /* Reduced padding */
+  max-width: 400px; /* Set a maximum width for the form */
+  margin: auto; /* Center the form */
+}
+
+/* Contact Section */
+#contact {
+  padding: 15px; /* Reduced padding */
+  background: radial-gradient(circle at center, rgb(255, 124, 0) 0%, rgb(255, 163, 77) 20%, rgb(19, 30, 37) 100%);
+  border-radius: 10px; /* Added border-radius for better look */
+}
+
+/* Feedback Form Container */
+#contact #feedback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px; /* Reduced padding */
+  max-width: 400px; /* Set a maximum width for the form */
+  margin: auto; /* Center the form */
+}
+
+/* Contact Form Styling */
+#contact #feedback form {
+  width: 100%; /* Full width */
+  padding: 10px; /* Adjusted padding */
+}
+
+#contact #feedback form input,
+#contact #feedback form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-bottom: 2px solid white;
+  background-color: transparent;
+  color: white;
+  font-size: 1rem; /* Smaller font size */
+}
+
+#contact #feedback form button {
+  padding: 8px 20px; /* Adjusted padding for smaller size */
+  border: 2px solid white;
+  background-color: transparent;
+  color: white;
+  font-size: 1rem; /* Reduced font size */
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+/* Contact Details */
+#contact #feedback #contact-details {
+  width: 100%; /* Full width */
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* Social Icon Styling */
+#contact #feedback .social-icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+#contact #feedback .social-icons li {
+  margin: 0 8px; /* Slightly closer spacing */
+  font-size: 1.2rem; /* Reduced base icon size */
+  color: white;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#contact #feedback .social-icons li:hover {
+  color: #ff7300; /* Color change on hover */
+  transform: scale(1.2); /* Zoom-in effect on hover */
+  transition: transform 0.3s ease; /* Smooth transition */
+  animation: bounce 0.6s; /* Bounce animation on hover */
+
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0); /* Resting position */
+  }
+  40% {
+    transform: translateY(-10px); /* Slight upward bounce */
+  }
+  60% {
+    transform: translateY(-5px); /* Small bounce before returning */
+  }
+}
+
+/* Responsive for smaller screens */
+@media screen and (max-width: 572px) {
+  #contact #feedback .social-icons li {
+    margin: 0 5px; /* Closer spacing on mobile */
+    font-size: 1rem; /* Smaller icons for mobile */
+  }
+.socials i{
+  font-size: 1.3rem;
+}
+}
+/* Responsive for smaller screens */
+@media screen and (max-width: 572px) {
+  #contact {
+    padding: 10px;
+  }
+
+  #contact #feedback {
+    padding: 5px; /* Reduced padding */
+    max-width: 100%; /* Full width */
+  }
+
+  #contact #feedback form input,
+  #contact #feedback form textarea {
+    padding: 8px; /* Adjusted padding */
+    font-size: 0.9rem; /* Smaller font size */
+  }
+
+  #contact #feedback form button {
+    padding: 7px 15px;
+    font-size: 0.9rem; /* Smaller button text */
+  }
+
+  #contact #feedback #contact-details {
+    margin-top: 10px;
+  }
+
+  #contact #feedback .social-icons {
+    margin-top: 10px;
+  }
+
+  #contact #feedback .social-icons li {
+    margin: 0 3px; /* Further reduced margin between icons */
+    font-size: 1.1rem; /* Further reduced icon size */
+  }
+}
+
+
+
+
+/* Divider and Icon Adjustments */
+
+
+
+/* Even Smaller Screens */
+@media screen and (max-width: 572px) {
+  .orange-heading {
+    font-size: 1rem; /* Further reduce heading size */
+    margin-bottom: 5px;
+  }
+
+  .content {
+    font-size: 0.85rem; /* Reduce content size */
+    margin-bottom: 8px;
+  }
+
+  #work, #edu-box {
+    width: 100%;
+    padding: 5px;
+  }
+}
