@@ -1,213 +1,111 @@
-var current = 0;
-var target;
-
-//adding smooth scrolling when clicking on nav target menu
-var anchor = document.querySelectorAll(".nav-menu a");
-
-for(var i=0; i<anchor.length; i++){
-    anchor[i].addEventListener("click",function(event){
-        event.preventDefault();
-        var targetSec = this.textContent.trim().toLowerCase();
-        var section = document.getElementById(targetSec);
-        var r = section.getBoundingClientRect();
-        target = r.y;
-        current = 0;   
-        
-        var scrollInterval = setInterval(function()
-        {
-            if(current >= target){
-                clearInterval(scrollInterval);
-                return;
-            };
-    
-            current += 50;
-            window.scrollBy(0, 50);
-            
-        } , 20);
-    });
-}
-
-
-function smoothScroll(element){
-    var position = element.getBoundingClientRect();
-    
-    if(position.top <= 0){
-        clearInterval(scrollInterval);
-          return;
-    };
-
-    window.scrollBy(0, 50);
-};
-
-var targetSec2 = document.querySelectorAll('#menu #droplist .redirect');
-var scrollInterval;
-
-
-for(var i=0; i<targetSec2.length; i++){
-    targetSec2[i].addEventListener('click',function(event){
-        console.log(targetSec2[i]);
-        event.preventDefault();
-        var section = this.textContent.trim().toLowerCase();
-        var element = document.getElementById(section);
-
-
-        scrollInterval = setInterval(function(){
-            smoothScroll(element);
-        },20);
-    });
-}
-
-//animating skill filling on arriving at the skill div
-
-window.addEventListener("scroll", start_animation); 
-
-//function for emptying div
-function empty_bar(n){
-
+// Function to empty the skill bar
+function empty_bar(n) {
     let skill = document.querySelectorAll('#skills #skill-set .skill-percent div');
     skill[n].style.width = "0%";
 }
 
-//function for filling div
-function start_filling(n){
-
+// Function to fill the skill bar
+function start_filling(n) {
     let skill = document.querySelectorAll('#skills #skill-set .skill-percent div');
     let percent = skill[n].getAttribute('data-percent');
-
     let width = 0;
-    let interval = setInterval(function(){
-        if(width >= percent)
-        {
-            clearInterval(interval);
-            animationDone = true;
-            return;
-        };
-            
-        width += 5;
-        skill[n].style.width = width + "%";       
-        
-    }, 70);
-   
-}
 
-var skill_fillers = document.querySelectorAll("#skills #skill-set .skill-percent");
-
-function start_animation(){
-        
-    for(let bar=0; bar<skill_fillers.length; bar++)
-    {
-        let position = skill_fillers[bar].getBoundingClientRect();
-
-        if(skill_fillers[bar].getAttribute("fill")=="false" && position.top <= window.innerHeight)
-        {
-            start_filling(bar);
-            
-            skill_fillers[bar].setAttribute("fill", "true");
-
-        }else if(position.top > window.innerHeight)
-        {
-            skill_fillers[bar].setAttribute("fill", "false");
-            empty_bar(bar);
+    // Using requestAnimationFrame for smoother animation
+    function fill() {
+        if (width < percent) {
+            width += 1; // Adjust speed here
+            skill[n].style.width = width + "%";
+            requestAnimationFrame(fill);
+        } else {
+            skill[n].style.width = percent + "%"; // Ensure it fills to the exact percentage
         }
     }
-
-};
-
-
-
-const menuOpen = document.getElementById("menu-open")
-const menuClose = document.getElementById("menu-close")
-const mobileMenu = document.querySelector(".mobile-menu")
-const logo = document.querySelector(".mobile-sn")
-
-function openMenu(){
-    mobileMenu.style.display = "block"
-    menuOpen.style.display = "none"
-    menuClose.style.display = "block"
-    menuClose.style.color = "white"
-    logo.style.color = "white"
+    requestAnimationFrame(fill);
 }
 
-function closeMenu(){
-    menuOpen.style.display = "block"
-    menuClose.style.display = "none"
-    mobileMenu.style.display = "none"
-    header.style.background = "white"
-    logo.style.color = "black"
+// Function to check if an element is in the viewport
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top < (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.bottom >= 0
+    );
 }
 
-menuOpen.onclick = openMenu
-menuClose.onclick = closeMenu
+// Handling scroll-based skill animation
+var skill_fillers = document.querySelectorAll("#skills #skill-set .skill-percent");
 
-const typed = new Typed(".typing",{
-    strings: ["“Those who work hard, work alone. Those who work smart, work as a team.” -Utibe Samuel Mbom"],
+function start_animation() {
+    for (let bar = 0; bar < skill_fillers.length; bar++) {
+        let skill_bar = skill_fillers[bar];
+        let skill_div = skill_bar.querySelector('div');
+
+        if (isInViewport(skill_bar)) {
+            if (!skill_bar.classList.contains("filled")) {
+                start_filling(bar);
+                skill_bar.classList.add("filled");
+            }
+        } else {
+            if (skill_bar.classList.contains("filled")) {
+                empty_bar(bar);
+                skill_bar.classList.remove("filled");
+            }
+        }
+    }
+}
+
+// Trigger the animation on page load
+window.addEventListener("load", start_animation);
+
+// Trigger the animation on scroll
+window.addEventListener("scroll", start_animation);
+
+// Smooth scrolling for navigation links
+var anchor = document.querySelectorAll(".nav-menu a");
+
+anchor.forEach(link => {
+    link.addEventListener("click", function(event) {
+        event.preventDefault();
+        let targetId = this.getAttribute("href").slice(1);
+        let targetSection = document.getElementById(targetId);
+
+        window.scrollTo({
+            top: targetSection.offsetTop,
+            behavior: "smooth" // Uses browser's native smooth scrolling
+        });
+    });
+});
+
+// Mobile navigation menu open/close functions
+const menuOpen = document.getElementById("menu-open");
+const menuClose = document.getElementById("menu-close");
+const mobileMenu = document.querySelector(".mobile-menu");
+const logo = document.querySelector(".mobile-sn");
+
+function openMenu() {
+    mobileMenu.style.display = "block";
+    menuOpen.style.display = "none";
+    menuClose.style.display = "block";
+    menuClose.style.color = "white";
+    logo.style.color = "white";
+}
+
+function closeMenu() {
+    menuOpen.style.display = "block";
+    menuClose.style.display = "none";
+    mobileMenu.style.display = "none";
+    // Assuming 'header' is defined elsewhere
+    // header.style.background = "white";
+    logo.style.color = "black";
+}
+
+menuOpen.onclick = openMenu;
+menuClose.onclick = closeMenu;
+
+// Typed.js instance for typing effect
+const typed = new Typed(".typing", {
+    strings: ["“Those who work hard, work alone. Those who work smart, work as a team.” - Utibe Samuel Mbom"],
     typeSpeed: 100,
     backSpeed: 60,
     loop: true,
-})
-
-function myWork(){
-    window.location.href = "./mywork.html"
-}
-
-function aboutMe(){
-    window.location.href = "./about.html"
-}
-
-function siteupdate(){
-    document.getElementById("warning-display").style.display = 'block';
-}
-
-function closeSiteUpdate(){
-    document.getElementById("warning-display").style.display = 'none';
-}
-
-document.querySelector(".mywork-btn").addEventListener('mouseover', ()=>{
-    document.querySelector(".aboutme-btn").style.background = "var(--primary-color)";
-    document.querySelector(".aboutme-btn").style.transition = "all 350ms ease";
-    document.querySelector(".aboutme-btn").style.border = "none";
-    document.querySelector(".aboutme-btn").style.color = "white";
-    document.querySelector(".mywork-btn").style.background = "white";
-    document.querySelector(".mywork-btn").style.transition = "all 350ms ease";
-    document.querySelector(".mywork-btn").style.color = "var(--primary-color)";
-})
-
-document.querySelector(".mywork-btn").addEventListener('mouseleave', ()=>{
-    document.querySelector(".aboutme-btn").style.background = "white";
-    document.querySelector(".aboutme-btn").style.border = "1px solid var(--primary-color)";
-    document.querySelector(".aboutme-btn").style.transition = "all 350ms ease";
-    document.querySelector(".aboutme-btn").style.color = "var(--primary-color)";
-    document.querySelector(".mywork-btn").style.background = "var(--primary-color)";
-    document.querySelector(".mywork-btn").style.transition = "all 350ms ease";
-    document.querySelector(".mywork-btn").style.color = "white";
-
-})
-
-document.querySelector(".aboutme-btn").addEventListener('mouseover', ()=>{
-    document.querySelector(".aboutme-btn").style.background = "var(--primary-color)";
-    document.querySelector(".aboutme-btn").style.transition = "all 350ms ease";
-    document.querySelector(".aboutme-btn").style.border = "none";
-    document.querySelector(".aboutme-btn").style.color = "white";
-    document.querySelector(".mywork-btn").style.background = "white";
-    document.querySelector(".mywork-btn").style.border = "1px solid var(--primary-color)";
-    document.querySelector(".mywork-btn").style.transition = "all 350ms ease";
-    document.querySelector(".mywork-btn").style.color = "var(--primary-color)";
-})
-
-document.querySelector(".aboutme-btn").addEventListener('mouseleave', ()=>{
-    document.querySelector(".aboutme-btn").style.background = "white";
-    document.querySelector(".aboutme-btn").style.border = "1px solid var(--primary-color)";
-    document.querySelector(".aboutme-btn").style.transition = "all 350ms ease";
-    document.querySelector(".aboutme-btn").style.color = "var(--primary-color)";
-    document.querySelector(".mywork-btn").style.background = "var(--primary-color)";
-    document.querySelector(".mywork-btn").style.transition = "all 350ms ease";
-    document.querySelector(".mywork-btn").style.color = "white";
-
-})
-
-
-
-
-
-
-
+});
