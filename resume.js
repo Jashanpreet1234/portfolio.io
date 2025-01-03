@@ -63,6 +63,15 @@ window.addEventListener("load", start_animation);
 
 // Trigger the animation on scroll
 window.addEventListener("scroll", start_animation);
+window.onscroll = function () {
+    const navbar = document.querySelector('.navbar');
+    if (window.pageYOffset > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+  };
+  
 
 // Smooth scrolling for navigation links
 var anchor = document.querySelectorAll(".nav-menu a");
