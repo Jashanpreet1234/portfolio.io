@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300&display=swap');
 
+
+
+
 body {
   margin: 0px;
   font-family: 'Josefin Sans', sans-serif;
@@ -9,7 +12,6 @@ body {
   background-color: rgb(0, 0, 0);
 }
 
-/* Video background styles */
 
 #body-header {
   height: 35vh !important;
@@ -24,12 +26,69 @@ body {
 }
 
 
+
+/* Floating orb animation with more movement */
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-30px) translateX(40px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
 #bar{
   display: none;
+}
+#my-image {
+  position: relative;
+  width: 150px; /* Adjust this to your image size */
+  height: 150px; /* Adjust this to your image size */
+  margin: auto;
+  border-radius: 50%; /* Ensures the image is circular */
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5), /* Outer subtle glow */
+              0 0 40px rgba(255, 255, 255, 0.7), /* Mid-level glow */
+              0 0 60px rgba(255, 255, 255, 0.9); /* Strong glow */
+}
+
+#my-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+/* Optionally, add an animated pulsing effect */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+                0 0 40px rgba(255, 255, 255, 0.7),
+                0 0 60px rgba(255, 255, 255, 0.9);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.7),
+                0 0 50px rgba(255, 255, 255, 0.9),
+                0 0 70px rgba(255, 255, 255, 1);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+                0 0 40px rgba(255, 255, 255, 0.7),
+                0 0 60px rgba(255, 255, 255, 0.9);
+  }
+}
+
+#my-image:hover {
+  animation: pulseGlow 2s infinite ease-in-out;
 }
 
  
 /* name */
+ 
+
+
 
 .container {
   display: flex;
@@ -51,6 +110,7 @@ body {
   transform: scale(0); /* Start scaled down */
   animation: popUp 2s ease-out forwards, glowEffect 2s 2s infinite, disappear 6s forwards; /* Added disappear animation */
 }
+
 
 /* Keyframes for animations */
 @keyframes popUp {
@@ -111,7 +171,75 @@ body {
     font-size: 2rem;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 /* Horizontal Lists */
+
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+/* Navbar link hover with glow */
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Hover effect for glowing navbar */
+.nav-links li a:hover {
+  color: #ff00aa;
+  box-shadow: 0 0 15px rgba(255, 0, 170, 0.7), 0 0 25px rgba(255, 0, 170, 0.9);
+  text-shadow: 0 0 10px rgba(255, 0, 170, 0.9);
+}
+
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: #ff00aa;
+  transition: all 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+
+
+
+
+
 .navbar {
   position: fixed;
   top: 0;
@@ -125,48 +253,6 @@ body {
   transition: background-color 0.5s ease-in-out;
 }
 
-.navbar.scrolled {
-  background-color: rgba(0, 0, 0, 1);
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-}
-
-.nav-links li {
-  margin: 0 20px;
-}
-
-.nav-links li a {
-  text-decoration: none;
-  font-size: 13px;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  position: relative;
-  padding: 5px 0;
-  transition: color 0.3s ease-in-out;
-}
-
-
-.nav-links li a:hover {
-  color: #eb1919;
-}
-
-.nav-links li a::before {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #eb1919;
-  transition: 0.4s ease-in-out;
-}
 
 .nav-links li a:hover::before {
   width: 100%;
@@ -227,54 +313,94 @@ body {
 
 @media screen and (max-width: 572px){
   
-  
-  nav #bar{
-      display: flex;
-      justify-content: flex-end;
-  }
-  
-  nav #bar div:first-child{
-      margin-right: 5%;
-      margin-bottom: 5%;
-      color: rgb(255, 255, 255);
-  }
-  nav .horizontal-list{
-      display: none;
-  }
-  
+  nav #bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    z-index: 10; /* Ensures the dropdown is above other content */
+}
 
-  nav #bar #menu {
-      display: none;
-      top: 7%;
-      left: 70%;
-      width: 7rem;
-      background-color: rgb(81, 82, 82);
-      box-shadow: 0px 0px 1rem black;
-      position: absolute;
-      margin: 1rem;
-  }
-  
-  nav #bar:hover #menu{
-    display: block;    
-  }
-  
-  #droplist{
-     list-style: none;
-      padding: 10px;
-    margin: 0px;        
-  }
-  
-  #droplist li a{
-      color: rgb(255, 248, 248);
-      text-decoration: none;
-      font-size: 1rem;
-      margin: 0px;
-      font-weight: bold;
-  }
+nav #bar div:first-child {
+    margin-right: 5%;
+    margin-bottom: 5%;
+    color: rgb(255, 255, 255);
+    font-size: 1.2rem; /* Slightly increased font size */
+}
 
-   #droplist li a:hover{
-      color: gray;
-   }
+nav .horizontal-list {
+    display: none; /* Hides the list on smaller screens */
+}
+
+/* Dropdown Menu */
+nav #bar #menu {
+    display: none;
+    top: 100%; /* Positioned just below the bar */
+    left: auto;
+    right: 5%; /* Better placement on smaller screens */
+    width: 10rem;
+    background-color: #515252;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Softer shadow */
+    border-radius: 8px; /* Rounded corners */
+    position: absolute;
+    opacity: 0;
+    transform: translateY(-10px); /* Slightly above its resting position */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+nav #bar:hover #menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0); /* Drops into place */
+}
+
+/* Dropdown List */
+#droplist {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adds spacing between list items */
+}
+
+#droplist li a {
+    color: rgb(255, 248, 248);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+#droplist li a:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.2); /* Slight background change on hover */
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+
+    nav #bar #menu {
+        width: 100%;
+        right: 0;
+        left: 0;
+        box-shadow: none;
+    }
+
+    #droplist {
+        gap: 8px;
+    }
+
+    #droplist li a {
+        font-size: 1rem;
+        padding: 8px 0;
+        text-align: center;
+    }
+}
+
 }
 
 /*About Section*/
@@ -375,7 +501,7 @@ section#skills {
 .percent55 {
   height: inherit;
   width: 55%;
-  background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+  background-image: linear-gradient(120deg, #ea2eff 0%, #f5576c 100%);
   border-radius: 20px 0px 0px 20px;
   box-shadow: 0px 0px 5px;
 }
@@ -383,7 +509,7 @@ section#skills {
 .percent60 {
   height: inherit;
   width: 60%;
-  background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+  background-image: linear-gradient(to right, #c6ffdd, #fdc23a, #f74b51);
   border-radius: 20px 0px 0px 20px;
   box-shadow: 0px 0px 5px;
 }
@@ -391,42 +517,15 @@ section#skills {
 .percent65 {
   height: inherit;
   width: 65%;
-  background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+  background-image: linear-gradient(120deg, #89f7fe 0%, #247fff 100%);
   border-radius: 20px 0px 0px 20px;
-  box-shadow: 0px 0px 5px;
-}
-
-.percent70 {
-  height: inherit;
-  width: 70%;
-  background-image: linear-gradient(109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1%);
-  border-radius: 20px 0px 0px 20px;
-  box-shadow: 0px 0px 5px;
-}
-
-
-
-
-.percent60{
-  height: inherit;
-  width: 60%;
-  background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
-  border-radius : 20px 0px 0px 20px;
   box-shadow: 0px 0px 5px;
 }
 
 .percent70{
   height: inherit;
   width: 70%;
-  background-image: linear-gradient( 109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% );
-  border-radius : 20px 0px 0px 20px;
-  box-shadow: 0px 0px 5px;
-}
-
-.percent80{
-  height: inherit;
-  width: 80%;
-  background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% );
+  background-image: linear-gradient( 109.6deg, rgb(244, 252, 156) 11.2%, rgb(168, 255, 81) 91.1% );
   border-radius : 20px 0px 0px 20px;
   box-shadow: 0px 0px 5px;
 }
@@ -434,10 +533,20 @@ section#skills {
 .percent75{
   height: inherit;
   width: 75%;
-  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+  background-image: linear-gradient(120deg, #d4fc79 0%, #2fb241 100%);
   border-radius : 20px 0px 0px 20px;
   box-shadow: 0px 0px 5px;
 }
+
+.percent80{
+  height: inherit;
+  width: 80%;
+  background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgb(255, 139, 201) 64% );
+  border-radius : 20px 0px 0px 20px;
+  box-shadow: 0px 0px 5px;
+}
+
+
 
 
 .skill-percent span{
@@ -710,6 +819,20 @@ section#education{
       font-size: 30px;
 }
 
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .animate-charcter {
+    font-size: 24px; /* Reduce font size for tablets and smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .animate-charcter {
+    font-size: 18px; /* Further reduce font size for mobile screens */
+    animation: textclip 3s linear infinite; /* Slightly slower animation for better readability */
+  }
+}
+
 @keyframes textclip {
   to {
     background-position: 200% center;
@@ -761,7 +884,26 @@ section#education{
 .glow-on-hover:hover a {
   color: #f0f0f0; /* Slightly lighter text on hover */
 }
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .glow-on-hover {
+    width: 180px; /* Reduce width */
+    height: 45px; /* Reduce height */
+    font-size: 16px; /* Smaller font size */
+    letter-spacing: 1.2px; /* Adjust letter spacing */
+    border-radius: 8px; /* Slightly smaller border radius */
+  }
+}
 
+@media (max-width: 480px) {
+  .glow-on-hover {
+    width: 150px; /* Further reduce width */
+    height: 40px; /* Further reduce height */
+    font-size: 14px; /* Smaller font size for mobile */
+    letter-spacing: 1px; /* Reduce letter spacing */
+    border-radius: 6px; /* Adjust border radius for compact look */
+  }
+}
 .glow-on-hover:before {
   content: '';
   background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
@@ -852,8 +994,7 @@ section#education{
 }
 
 #portfolio{
-   background-image: url(https://miro.medium.com/max/1400/1*vel6K7Qm9iX8mBCrZit0sw.gif);
-   width: 100%;
+   background-image: url(https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzJ3NzRmcDB6a2MybWQ2dmVndTk4aXp3cnh3dGlyOWRsa3BqNHc5dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UYBDCJjwOd9Re/giphy.webp);
    height:20%;
 }
 
@@ -875,7 +1016,7 @@ section#education{
   align-items: center;
   color: white;
   padding: 50px 0;
-  background: radial-gradient(circle at -8.9% 51.2%, rgb(255, 124, 0) 0%, rgb(255, 124, 0) 15.9%, rgb(255, 163, 77) 15.9%, rgb(255, 163, 77) 24.4%, rgb(19, 30, 37) 24.5%, rgb(19, 30, 37) 66%);
+  background: radial-gradient(circle at -8.9% 51.2%, rgb(255, 20, 147) 0%, rgb(255, 20, 147) 15.9%, rgb(255, 105, 180) 15.9%, rgb(255, 105, 180) 24.4%, rgb(19, 30, 37) 24.5%, rgb(19, 30, 37) 66%);
   animation: fadeInBackground 2s ease-in-out;
 }
 
@@ -1418,3 +1559,6 @@ section#education{
     padding: 5px;
   }
 }
+
+
+
