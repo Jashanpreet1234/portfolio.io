@@ -2,107 +2,285 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="stylesheet" type="text/css" href="project.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-        <script src="https://polyfill.io/v3/polyfill.min.js"></script>
   <title>Projects</title>
+  <link rel="stylesheet" href="project.css">
+  <link rel="icon" type="image/png" href="images/idea.png">
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      color: #333;
+      padding-top: 100px; /* Space for fixed header and animated title */
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: #333;
+      color: #fff;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+
+    header nav ul li {
+      display: inline;
+    }
+
+    header nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* Menu Icon for Small Screens */
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-icon div {
+      background: #fff;
+      height: 3px;
+      width: 25px;
+      margin: 4px 0;
+    }
+
+    /* Responsive Navigation */
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: flex;
+      }
+
+      header nav ul {
+        display: none;
+        flex-direction: column;
+        background: #333;
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        width: 200px;
+      }
+
+      header nav ul.active {
+        display: flex;
+      }
+    }
+
+    
+
+    /* Page Title */
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 2.5rem;
+      color: #444;
+    }
+
+    /* Project Section */
+    #my-works {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .project-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 300px;
+      overflow: hidden;
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.3s ease;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .project-content h3 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .project-content p {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .project-content a {
+      text-decoration: none;
+      color: #fff;
+      background: #007bff;
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 5px;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+
+    .project-content a:hover {
+      background: #0056b3;
+    }
+
+    .project-card:hover {
+      transform: translateY(0) scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .project-card {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
 <body>
 
-        <header>
-          <nav>
-            <ul>
-                <li><a href="index.html">MY RESUME</a></li>
-                <li><a href="project.html">PROJECTS</a></li>
-            </ul>
-        </nav>
-        
-          
-            <span class="material-icons" id="menu-open">menu</span>
-        </header>
-        <div class="mobile-menu">
-            <span class="material-icons" id="menu-close">close</span>
-            <div class="profile-picture"></div>
-            <div class="navigation">
-                <nav>
-                    <ul>
-                        <li><a href="index.html">MY RESUME</a></li>
-                        <li><a href="project.html">PROJECTS</a></li>
-                
-                    </ul>
-                </nav>
-            </div>
-            <span class="typing"></span>
-        </div>
-        <h1 class="text">My Projects</h1>
-        <section id="my-works">
-      
-            <div class="my-works__container quote-generator">
-                <div class="my-works__container__left-side  quote-generator__left-side" id="quote-generator-background">
-                </div>
-                <div class="my-works__container__right-side quote-generator__right-side">
-                    <h3>Quote_generator</h3>
-                    <p class="line-height">
-                      This is a quote generator website and at every click there will be new inspirational quote.
-                       
-                    </p>
-                    <a class="github-repo-link" href="https://github.com/Jashanpreet1234/quoteGenerator.github.io" target="_blank"><i class="fa-brands fa-github github"></i></a>
-                    <a class="github-pages-link" href="https://jashanpreet1234.github.io/quoteGenerator.github.io/" target="_blank"><i class="fa-brands fa-chrome github"></i></a>
-                </div>
-            </div>
+  <!-- Header -->
+  <header>
+    <div class="menu-icon" id="menu-icon">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav>
+      <ul id="nav-menu">
+        <li><a href="index.html">My Resume</a></li>
+        <li><a href="project.html">Projects</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <!-- Page Title -->
+  <h1>My Projects</h1>
 
-            <div class="my-works__container animated-background">
-                <div class="my-works__container__left-side animated-background__left-side" id="animated-background">
-                </div>
-                <div class="my-works__container__right-side animated-background__right-side" id="animated-background-text">
-                    <h3>Animated-Background</h3>
-                    <p class="line-height">
-                        This project makes extensive use of HTML,CSS animation, and JavaScript. The background is animated and by hovering over the card, it will show animation
-                        
-                    </p>
-                    <a class="github-repo-link" href="https://github.com/Jashanpreet1234/Animated-Background.io" target="_blank"><i class="fa-brands fa-github github"></i></a>
-                    <a class="github-pages-link" href="https://jashanpreet1234.github.io/Animated-Background.io/" target="_blank"><i class="fa-brands fa-chrome"></i></a>
-                </div>
-            </div>
+  <!-- Project Section -->
+  <section id="my-works">
+    <!-- Project 1: Quote Generator -->
+    <div class="project-card">
+      <img src="images/Inspirational_Quote_generator.png" alt="Quote Generator Project">
+      <div class="project-content">
+        <h3>Quote Generator</h3>
+        <p>This is a quote generator website where every click displays a new inspirational quote.</p>
+        <a href="https://github.com/Jashanpreet1234/quoteGenerator.github.io" target="_blank">GitHub Repo</a>
+        <a href="https://jashanpreet1234.github.io/quoteGenerator.github.io/" target="_blank">Live Demo</a>
+      </div>
+    </div>
 
+    <!-- Project 2: Animated Background -->
+    <div class="project-card">
+      <img src="images/animated_background.png" alt="Animated Background Project">
+      <div class="project-content">
+        <h3>Animated Background</h3>
+        <p>This project uses HTML, CSS animations, and JavaScript to create a dynamic animated background.</p>
+        <a href="https://github.com/Jashanpreet1234/Animated-Background.io" target="_blank">GitHub Repo</a>
+        <a href="https://jashanpreet1234.github.io/Animated-Background.io/" target="_blank">Live Demo</a>
+      </div>
+    </div>
 
-                    <div class="my-works__container weeklykitten">
-                        <div class="my-works__container__left-side  weeklykitten__left-side" id="weeklykitten-background">
-                        </div>
-                        <div class="my-works__container__right-side weeklykitten__right-side" id="weeklykitten-text">
-                            <h3>Weekly Kitten Subscription</h3>
-                            <p class="line-height">
-                              This is a weekly kitten subscription form made with HTML, CSS, and JavaScript.
-                            </p>
-                            <a class="github-repo-link" href="https://github.com/Jashanpreet1234/Subscription_Form.io" target="_blank"><i class="fa-brands fa-github github"></i></a>
-                            <a class="github-pages-link" href="https://jashanpreet1234.github.io/Subscription_Form.io/" target="_blank"><i class="fa-brands fa-chrome github"></i></a>
-                        </div>
-                    </div>
-            
-
-
-
-        </section>
-        <div class="viewmore">
-            <a class="github-repo-link" href="https://github.com/Jashanpreet1234?tab=repositories" target="_blank"><i class="fa-brands fa-github repositories"></i></a>
-        </div>
-    
-        
-      
-        
-        </footer>
-        <script src="https://kit.fontawesome.com/d2a1321d7b.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js" referrerpolicy="no-referrer"></script>
-        <script src="resume.js"></script>
-    </body>
-    </html>
+ 
+    <div class="project-card">
+      <img src="images/Books.png" alt="Weekly Kitten Subscription Project">
+      <div class="project-content">
+        <h3>Online Book Library</h3>
+        <p>An engaging platform where users can explore, browse, and read books from various genres and categories.</p>
+        <a href="https://github.com/Jashanpreet1234/Books.io" target="_blank">GitHub Repo</a>
+        <a href="https://jashanpreet1234.github.io/Books.io/index.html/" target="_blank">Live Demo</a>
+      </div>
+    </div>
 
 
 
 
 
+    <div class="project-card">
+      <img src="images/Weekly-Kitten-Subscription.png" alt="Weekly Kitten Subscription Project">
+      <div class="project-content">
+        <h3>Weekly Kitten Subscription</h3>
+        <p>This is a weekly kitten subscription form made with HTML, CSS, and JavaScript.</p>
+        <a href="https://github.com/Jashanpreet1234/Subscription_Form.io" target="_blank">GitHub Repo</a>
+        <a href="https://jashanpreet1234.github.io/Subscription_Form.io/" target="_blank">Live Demo</a>
+      </div>
+    </div>
+
+
+
+
+ <div class="project-card">
+  <img src="images/capitals.png" alt="Country-Capital Quiz Project">
+  <div class="project-content">
+    <h3>Country-Capital Quiz</h3>
+    <p>This is an interactive quiz game to test your knowledge of countries and their capitals. Built using HTML, CSS, and JavaScript.</p>
+    <a href="https://github.com/Jashanpreet1234/country-capitals-quiz" target="_blank">GitHub Repo</a>
+    <a href="https://jashanpreet1234.github.io/country-capitals-quiz/" target="_blank">Live Demo</a>
+  </div>
+</div>
+
+  </section>
+
+
+
+
+
+
+  <!-- JavaScript -->
+  <script>
+    // Navbar Menu Toggle for Mobile
+    const menuIcon = document.getElementById("menu-icon");
+    const navMenu = document.getElementById("nav-menu");
+
+    menuIcon.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+
+    // Ensure cards are visible on load
+    window.addEventListener("load", () => {
+      const cards = document.querySelectorAll(".project-card");
+      cards.forEach((card) => {
+        card.style.opacity = 1;
+        card.style.transform = "translateY(0)";
+      });
+    });
+  </script>
 </body>
 </html>
